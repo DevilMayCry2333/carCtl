@@ -1,5 +1,7 @@
 {
   "name": "carCtl",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
