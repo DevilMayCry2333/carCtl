@@ -9,7 +9,10 @@ import { HTTP } from '@ionic-native/http/ngx';
 })
 export class Tab1Page {
   private result = "未连接服务器";
-
+  
+  private downcount = 0;
+  private leftcount = 0;
+  private rightcount = 0;
 
   constructor(private alertController:AlertController,
               private vibration: Vibration,
@@ -23,13 +26,33 @@ export class Tab1Page {
    test(param){
      let url:string;
      if(param=="ONA"){
-       url = "http://10.3.141.1:5000/up"
+         url = "http://10.3.141.1:5000/up"
      }else if(param=="ONB"){
-      url = "http://10.3.141.1:5000/down"
+      if(this.downcount==1){
+        this.downcount = 0;
+        url = "http://10.3.141.1:5000/stop"
+      }else{
+        this.downcount += 1;
+        url = "http://10.3.141.1:5000/down"
+      }
      }else if(param=="ONC"){
-      url = "http://10.3.141.1:5000/left"
+      if(this.leftcount==1){
+        this.leftcount = 0;
+        url = "http://10.3.141.1:5000/stop"
+      }else{
+        this.leftcount += 1;
+        url = "http://10.3.141.1:5000/left"
+      }
      }else if(param=="OND"){
-      url = "http://10.3.141.1:5000/right"
+      if(this.rightcount==1){
+        this.rightcount = 0;
+        url = "http://10.3.141.1:5000/stop"
+      }else{
+        this.rightcount += 1;
+        url = "http://10.3.141.1:5000/right"
+      }
+     }else if(param=="START"){
+      url = "http://10.3.141.1:5000/start"
      }else{
       url = "http://10.3.141.1:5000/stop"
      }
@@ -38,18 +61,17 @@ export class Tab1Page {
       console.log(data.status);
       console.log(data.data); // data received by server
       this.result = data.data;
+      // setTimeout(()=>{
+      //   this.test2();
+      // },500)
       console.log(data.headers);
-  
     })
     .catch(error => {
-  
       console.log(error.status);
       console.log(error.error); // error message as string
       this.result = error.error;
       console.log(error.headers);
-  
     });
-  
     this.vibration.vibrate(1000);
   }
   test2(){
@@ -60,15 +82,12 @@ export class Tab1Page {
       console.log(data.data); // data received by server
       this.result = data.data;
       console.log(data.headers);
-  
     })
     .catch(error => {
       console.log(error.status);
       console.log(error.error); // error message as string
       this.result = error.error;
       console.log(error.headers);
-  
     });
-    this.vibration.vibrate(1000);
   }
 }
