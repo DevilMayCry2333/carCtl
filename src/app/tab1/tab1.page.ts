@@ -9,7 +9,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 })
 export class Tab1Page {
   private result = "未连接服务器";
-  
+
   private downcount = 0;
   private leftcount = 0;
   private rightcount = 0;
@@ -53,7 +53,16 @@ export class Tab1Page {
       }
      }else if(param=="START"){
       url = "http://10.3.141.1:5000/start"
-     }else{
+     }else if(param=="duoleft"){
+      url = "http://10.3.141.1:5000/duoleft"
+     }else if(param=="duofront"){
+      url = "http://10.3.141.1:5000/duofront"
+     }else if(param=="duoright"){
+      url = "http://10.3.141.1:5000/duoright"
+     }else if(param=="shutdown"){
+      url = "http://10.3.141.1:5000/shutdown"
+     }
+     else{
       url = "http://10.3.141.1:5000/stop"
      }
     this.http.get(url, {}, {})

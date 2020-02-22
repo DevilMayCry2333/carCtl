@@ -12,19 +12,28 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div style="margin-top:25%;">
+    <div style="display: flex;">
+      <ion-button style="width: 45%;" color="primary" (click)="test('ONA')">前进</ion-button>
+      <ion-button style="width: 45%; margin-left: 10%;" color="secondary" (click)="test('ONB')">后退</ion-button>
+    </div>
+    <div style="display: flex;">
+      <ion-button style="width: 45%;" color="tertiary" (click)="test('OND')">左转</ion-button>
+      <ion-button style="width: 45%; margin-left: 10%;" color="success" (click)="test('ONC')">右转</ion-button>
+    </div>
+    <ion-button style="width: 100%;margin-top:3%;" color="warning" (click)="test('ONS')">停止</ion-button>
+    <ion-button style="width: 100%;" color="warning" (click)="test('START')">开始</ion-button>
+    <div style="display: flex;margin-top:3%;">
+      <ion-button style="width: 45%;" color="tertiary" (click)="test('duoleft')">舵机左</ion-button>
+      <ion-button style="width: 45%; margin-left: 10%;" color="success" (click)="test('duofront')">舵机前</ion-button>
+    </div>
+    <div style="display: flex;">
+      <ion-button style="width: 45%;" color="tertiary" (click)="test('duoright')">舵机右</ion-button>
+      <ion-button style="width: 45%; margin-left: 10%;" color="danger" (click)="test('shutdown')">关机</ion-button>
+    </div>
+    <div style="margin-left: 10%;">
+      服务器返回数据: {{result}}
+    </div>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-  <div style="display: flex;">
-    <ion-button style="width: 45%;" color="primary" (click)="test('ONA')">前进</ion-button>
-    <ion-button style="width: 45%; margin-left: 10%;" color="secondary" (click)="test('ONB')">后退</ion-button>
-  </div>
-  <div style="display: flex;">
-    <ion-button style="width: 45%;" color="tertiary" (click)="test('OND')">左转</ion-button>
-    <ion-button style="width: 45%; margin-left: 10%;" color="success" (click)="test('ONC')">右转</ion-button>
-  </div>
-  <ion-button style="width: 100%;" color="warning" (click)="test('ONS')">停止</ion-button>
-  <ion-button style="width: 100%;" color="warning" (click)="test('START')">开始</ion-button>
-  <div style="margin-left: 10%;">
-    服务器返回数据: {{result}}
-  </div>
 </ion-content>
