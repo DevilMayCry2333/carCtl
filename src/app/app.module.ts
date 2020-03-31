@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +19,6 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
     Vibration,
     HTTP,
     SplashScreen,
-    AndroidPermissions,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
