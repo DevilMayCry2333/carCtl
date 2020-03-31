@@ -14,16 +14,20 @@ export class Tab2Page {
   }
 
   ionViewWillEnter(){
+    //false;
     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.LOCATION_HARDWARE).then(
-      result => console.log('Has permission?',result.hasPermission),
+      result => {
+        console.log('Has permission?',result.hasPermission);
+          this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.LOCATION_HARDWARE);
+    },
       err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.LOCATION_HARDWARE)
     );
 
     baidu_location.watchPosition((data)=>{
-      // alert(JSON.stringify(data));
+      alert(JSON.stringify(data));
       console.log(data);
     },(msg)=>{
-      // alert(JSON.stringify(msg));
+      alert(JSON.stringify(msg));
       console.log(msg);
     },20);
 
